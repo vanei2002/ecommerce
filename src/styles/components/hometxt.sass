@@ -1,0 +1,37 @@
+@use '../variables'
+@use '../main'
+@use '../mixins'
+
+
+#home
+    padding: 2.5rem 0
+    background: variables.$gradienttwo
+
+    #payment
+
+        #payment-list
+            display: flex
+            list-style: none
+            justify-content: center
+
+            li
+                border-radius: .5rem
+                display: flex
+                padding: 1rem
+                border: 1px solid gray
+                margin: 2rem  1rem
+                background: #fff
+
+                .payment-sub
+                    padding-left: .5rem 
+
+                a
+                    text-decoration: none
+                    color: #000
+
+                button
+
+                    border: none
+                    background: none    
+                    color: blue
+                    font-size: .85rem
