@@ -28,7 +28,7 @@ const Navbar = () =>{
                 </ul>
                         
                 {user ? 
-                    <button className="button-navbar" onClick={userOff}>{`${user.name} ${user.letsName}`}</button> 
+                    <button className="button-navbar" onClick={userOff}>{`${user.name}`}</button> 
                         : 
                     <Link to='/login'>Login</Link>
                 }

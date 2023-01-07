@@ -8,7 +8,7 @@ import "../styles/pages/reset.sass"
 import InputText from "../components/InputText";
 
 const Reset = () => {
-    const [ useEmail, setUseEmail ] = useState();
+    const [ useEmail, setUseEmail ] = useState< string | any >();
 
     
     const {resetUser} = useContext(ContextPags);
@@ -18,7 +18,7 @@ const Reset = () => {
     return ( 
         <section className="container-reset">    
 
-            <h1 className="logoType">Ecommerce</h1>
+            <h1 className="logoType">E-commerce</h1>
 
             <section className="welcome">
                 <h1>Inscreva-se</h1>
