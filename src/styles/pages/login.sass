@@ -1,24 +1,35 @@
 @use "../variables"
 @use "../mixins"
 
-.container
+.container-login
     width: 23%
     min-width: 25rem
-    margin: 10% auto
+    margin:  9% auto
     padding: 20px
     border-radius: variables.$border-radius-conntainer 
     @include mixins.spacing 
+    @include mixins.animation
+    
+    
        
     .logoType 
         text-align: center
-        padding: 0.6rem 0 .8rem 0
+        padding: 0rem 0 .8rem 0
         background: variables.$gradienttwo
         -webkit-background-clip: text
         -webkit-text-fill-color: transparent
-        font-size: 2rem
+        font-size: 2.5rem
+        display: flex
+        justify-content: center
+        align-items: center
+
+        img
+            width: 5rem
+            height: 5rem
+            margin-right: .7rem
 
     .welcome
-        padding: 10px
+        padding: 10px 0  20px 0
 
         h1
             text-align: center
@@ -38,7 +49,6 @@
     .input-container
         display: flex
         flex-direction: column
-        margin-top: 1rem 
 
         span
             color: #a4a4a4 

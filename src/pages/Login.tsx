@@ -11,34 +11,35 @@ import {useState} from "react"
 import "../styles/pages/login.sass"
 import ModalPage from "../components/Modal";
 
+import cars from "../../public/imgs/cars2.png"
 
 const Login= () => {
     const navegation = useNavigate();
     const [ useEmail , setUseEmail ] = useState();
     const [ usePassword , setUsePassword ] = useState();
     
-    const {signin} = useContext(ContextPags)
+    const {signin , textModal , setTextModal} = useContext(ContextPags)
 
     async function authUser () {
         if(useEmail && usePassword){
             const islogged = await signin(useEmail , usePassword);
-
             if(islogged){
                 navegation('/')
             }   
 
         }else{
             alert('Campos não preenchidos')
+            setTextModal('Campos não preenchidos')
         }
     };
    
     return ( 
-        <section className="container">    
+        <section className="container-login">    
             <ModalPage>
-                <h2>Usuario ou senha estão incorretos</h2>
+                <h2>{textModal}</h2>
             </ModalPage>    
            
-            <h1 className="logoType">Ecommerce</h1>
+            <h1 className="logoType"><img src={cars} alt="" /> Ecommerce</h1>
 
             <div className="welcome">
                 <h1>Bem-vindo</h1>

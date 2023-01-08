@@ -67,9 +67,12 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
             }
         }
         validadeToken();
+        setOpen(false);
+
     },[]);
 
-    
+    const [textModal, setTextModal] = useState<string>('');
+
     async function signin(email: string , password: string){
         
         const data = await userApi.signin(email, password);
@@ -81,6 +84,7 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
 
         }else{
            setOpen(true);
+           setTextModal('Usuario ou senha estão incorreto')
            return false
         }
     }
@@ -118,7 +122,9 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
             logoutUser, 
             user,
             setOpen,
-            open
+            open,
+            setTextModal,
+            textModal,
 
             }}>
             {children}

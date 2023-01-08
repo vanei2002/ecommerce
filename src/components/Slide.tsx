@@ -3,18 +3,19 @@ import {motion} from "framer-motion"
 
 import "../styles/components/slide.sass"
 
-import img1 from "../../public/img1.png"
-import img2 from "../../public/img2.png"
-import img3 from "../../public/img3.png"
-import img4 from "../../public/img4.png"
+import img1 from "../../public/imgs/img1.png"
+import img2 from "../../public/imgs/img2.png"
+import img3 from "../../public/imgs/img3.png"
+import img4 from "../../public/imgs/img4.png"
 
 const imgs = [img1 ,img2 , img3, img4 ]
 
 const Slide = () =>{
-    const carrousel = useRef<null | HTMLDivElement>(null);
+    const carrousel = useRef<number|any >(null);
     const [width, setWidth] = useState(0)
 
     useEffect(()=>{
+
 
       setWidth(carrousel.current?.scrollWidth - carrousel.current?.offsetWidth)
     })

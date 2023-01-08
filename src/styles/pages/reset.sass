@@ -4,10 +4,11 @@
 .container-reset
     width: 23%
     min-width: 25rem
-    margin: 10% auto
+    margin: 8% auto
     padding: 1.2rem
     border-radius: variables.$border-radius-conntainer 
     @include mixins.spacing 
+    @include mixins.animation
        
     .logoType 
         text-align: center
@@ -15,7 +16,16 @@
         background: variables.$gradienttwo
         -webkit-background-clip: text
         -webkit-text-fill-color: transparent
-        font-size: 2rem
+        font-size: 2.5rem
+        display: flex
+        justify-content: center
+        align-items: center
+
+        img
+            width: 5rem
+            height: 5rem
+            margin-right: .7rem
+
 
     .welcome
         padding: 10px

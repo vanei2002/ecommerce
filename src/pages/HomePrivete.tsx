@@ -9,13 +9,10 @@ const HomePrivete = () => {
         <main>
             
             <Navbar/>
-
-            <article className="Container-private">
             
+            <article className="Container-private">
                 <HomeTxt/>
-             
                 <h1>Essa rotas é privada</h1>
-
             </article>
 
 

@@ -5,8 +5,10 @@ import { User } from "../types/type";
 export type UserContextType ={
     user: User | null ;
 
-    open: boolean;
+    open: boolean ;
     setOpen: (value: boolean) => void;
+    textModal: string;
+    setTextModal: (value: string) => void;
     resetUser: (email: string) => void;
     logoutUser: () => void;
     newUser: (name: string, secodName: string, email: string, password: string) => Promise<void>;

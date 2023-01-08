@@ -8,6 +8,7 @@ import {useState} from "react"
 
 
 import "../styles/pages/registration.sass"
+import cars from "../../public/imgs/cars2.png"
 
 const Registration = () => {
     const [ useEmail, setUseEmail ] = useState();
@@ -19,8 +20,8 @@ const Registration = () => {
     const createUser = () =>{ newUser(nameRegis, secondName, useEmail, usePassword )}
 
     return ( 
-        <section className="container">    
-            <h1 className="logoType">Ecommerce</h1>
+        <section className="container-registration">    
+            <h1 className="logoType"> <img src={cars}/> Ecommerce</h1>
 
             <section className="welcome">
                 <h1>Inscreva-se</h1>

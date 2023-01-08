@@ -8,6 +8,8 @@ import "../styles/pages/reset.sass"
 import InputText from "../components/InputText";
 import ModalPage from "../components/Modal";
 
+import cars from "../../public/imgs/cars2.png"
+
 const Reset = () => {
     const [ useEmail, setUseEmail ] = useState< string | any >();
 
@@ -24,7 +26,7 @@ const Reset = () => {
             </ModalPage>
 
 
-            <h1 className="logoType">E-commerce</h1>
+            <h1 className="logoType"><img src={cars}/> E-commerce</h1>
 
             <section className="welcome">
                 <h1>Inscreva-se</h1>

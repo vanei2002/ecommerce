@@ -12,12 +12,12 @@ const EnterWithGoogle = () => {
     return ( 
         <div>
             <button onClick={singInGoogle} className="inputGoogle">
-                <img src="./public/google.svg" alt="" /> 
+                <img src="./public/svg/google.svg" alt="" /> 
                 Entre com sua conta Goggle
             </button>
             
             <button onClick={singInFacebook} className="inputFacebook">
-                <img src="./public/facebook.svg" alt="" /> 
+                <img src="./public/svg/facebook.svg" alt="" /> 
                 Entre com sua do facebook
             </button>
         </div>
