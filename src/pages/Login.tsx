@@ -18,7 +18,7 @@ const Login= () => {
     const [ useEmail , setUseEmail ] = useState();
     const [ usePassword , setUsePassword ] = useState();
     
-    const {signin , textModal , setTextModal} = useContext(ContextPags)
+    const {signin , textModal , modalFunction} = useContext(ContextPags)
 
     async function authUser () {
         if(useEmail && usePassword){
@@ -26,10 +26,8 @@ const Login= () => {
             if(islogged){
                 navegation('/')
             }   
-
         }else{
-            alert('Campos não preenchidos')
-            setTextModal('Campos não preenchidos')
+            modalFunction('Campos não preenchidos', true)
         }
     };
    
@@ -62,7 +60,7 @@ const Login= () => {
             <ButtonMain authUser={authUser}> Entrar</ButtonMain>
                 
             <hr />
-            <Link to={`/cadastro`} className="registration">Não tem uma conta?</Link>
+            <Link to={`/registration`} className="registration">Não tem uma conta?</Link>
 
         </section>
      );

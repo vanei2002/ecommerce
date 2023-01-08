@@ -15,7 +15,7 @@ export const AppRouter = createBrowserRouter ([
         element: (<Login/>)
     },
     {   
-        path:"/cadastro",
+        path:"/registration",
         element: (<Registration/>)
     },
     {   

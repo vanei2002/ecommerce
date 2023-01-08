@@ -14,8 +14,15 @@ const Reset = () => {
     const [ useEmail, setUseEmail ] = useState< string | any >();
 
     
-    const {resetUser} = useContext(ContextPags);
-    const resetPass = () => resetUser(useEmail);
+    const {resetUser, modalFunction} = useContext(ContextPags);
+    const resetPass = () => {
+
+        if(useEmail){
+            resetUser(useEmail);
+        }else{
+            modalFunction('Campo não preenchido', true)
+        }
+    };
 
 
     return ( 

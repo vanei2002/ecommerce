@@ -9,6 +9,7 @@ import {useState} from "react"
 
 import "../styles/pages/registration.sass"
 import cars from "../../public/imgs/cars2.png"
+import ModalPage from "../components/Modal";
 
 const Registration = () => {
     const [ useEmail, setUseEmail ] = useState();
@@ -16,11 +17,24 @@ const Registration = () => {
     const [nameRegis, setNameRegis] = useState();
     const [secondName, setSecondName] = useState();
 
-    const { newUser } = useContext(ContextPags);
-    const createUser = () =>{ newUser(nameRegis, secondName, useEmail, usePassword )}
+    const { newUser, textModal , modalFunction } = useContext(ContextPags);
+
+    async function createUser () {
+        if(useEmail && usePassword && nameRegis && secondName){
+            await newUser(useEmail , usePassword, nameRegis, secondName);;
+            
+        }else{
+            modalFunction('Campos não preenchidos', true)
+        }
+    }
 
     return ( 
         <section className="container-registration">    
+
+            <ModalPage>
+                <h2>{textModal}</h2>
+            </ModalPage>
+
             <h1 className="logoType"> <img src={cars}/> Ecommerce</h1>
 
             <section className="welcome">

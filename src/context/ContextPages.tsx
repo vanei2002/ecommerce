@@ -18,6 +18,11 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
 
     const removeLocalStronge = () => localStorage.removeItem('user_token');
     
+    const modalFunction = (text: string, bollean: boolean) => {
+        setOpen(bollean);
+        setTextModal(text);
+    }
+
     const creteToken = () => {
         const token = Math.random().toString(36).substr(2);
         return token;
@@ -68,7 +73,6 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
         }
         validadeToken();
         setOpen(false);
-
     },[]);
 
     const [textModal, setTextModal] = useState<string>('');
@@ -83,12 +87,23 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
             return true;
 
         }else{
-           setOpen(true);
-           setTextModal('Usuario ou senha estão incorreto')
+            modalFunction('Usuario não cadastrado', true);
            return false
         }
     }
 
+    async function newUser (name: string, secodName: string, email: string, password: string){
+
+        const token = creteToken();
+        const create = await userApi.newUser(name, secodName, email, password , token);
+
+        if(create == true){
+            modalFunction('Usuario cadastrado com sucesso', true);
+
+        }else{
+            modalFunction('Usuario já cadastrado', true)
+        }
+    };
 
     async function logoutUser(){
         // await userApi.logoutUser()
@@ -97,18 +112,15 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
         return true
     };
 
-
-    async function newUser (name: string, secodName: string, email: string, password: string){
-        const token = creteToken();
-        const create = await userApi.newUser(name, secodName, email, password , token);
-        
-        if(typeof create == 'string') alert(create); 
-    };
-
-
     async function  resetUser (email: string){
        const reset =  await userApi.resetUser(email);
-       setOpen(reset);
+
+       if(reset){
+            modalFunction('Email enviado com sucesso', true)
+        }else{
+            modalFunction('Email não encontrado', true)
+       }
+
    };
 
     return (
@@ -125,7 +137,7 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
             open,
             setTextModal,
             textModal,
-
+            modalFunction,
             }}>
             {children}
         </ContextPags.Provider>
