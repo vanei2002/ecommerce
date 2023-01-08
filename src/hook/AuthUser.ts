@@ -15,16 +15,16 @@ export const AuthUser = () => ({
         }
     },
 
-    singinEmail: async (email: string | boolean) =>{
-
+    singinEmail: async (email: string) =>{
         try{
-            const response = await api.post('/users/singin', {email});
+            const response = await api.post('/users/email', {email});
             return response.data;
 
         }catch(err){
             console.log(err)
         }
     },
+
     newUser: async (name: string, secodName: string, email: string, password: string, token: string) =>{    
         try{
             const reponse = await api.post('/users/create', 
@@ -51,8 +51,8 @@ export const AuthUser = () => ({
         try{
             const response = await api.post('/users/token', {token});
             return response.data;
-        }catch{
-            console.log('error')
+        }catch(err){
+            console.log(err)
         }
     },
 

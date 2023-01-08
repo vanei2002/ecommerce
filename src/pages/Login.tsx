@@ -4,11 +4,12 @@ import { Link, useNavigate} from "react-router-dom";
 import { useContext} from "react";
 import {ButtonMain} from "../components/ButtonMain";
 import { ContextPags } from "../context/CreateContext";
-import {Checkbox} from "@mui/material"
+import {Checkbox, Modal} from "@mui/material"
 import {useState} from "react"
 
 
 import "../styles/pages/login.sass"
+import ModalPage from "../components/Modal";
 
 
 const Login= () => {
@@ -33,6 +34,10 @@ const Login= () => {
    
     return ( 
         <section className="container">    
+            <ModalPage>
+                <h2>Usuario ou senha estão incorretos</h2>
+            </ModalPage>    
+           
             <h1 className="logoType">Ecommerce</h1>
 
             <div className="welcome">
@@ -53,10 +58,11 @@ const Login= () => {
                 <Link to={`/reset`} className="reset">Esqueceu a senha?</Link>
             </div>
 
-                <ButtonMain authUser={authUser}> Entrar</ButtonMain>
+            <ButtonMain authUser={authUser}> Entrar</ButtonMain>
                 
             <hr />
             <Link to={`/cadastro`} className="registration">Não tem uma conta?</Link>
+
         </section>
      );
 }

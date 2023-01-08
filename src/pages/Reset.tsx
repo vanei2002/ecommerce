@@ -6,6 +6,7 @@ import {useState} from "react"
 
 import "../styles/pages/reset.sass"
 import InputText from "../components/InputText";
+import ModalPage from "../components/Modal";
 
 const Reset = () => {
     const [ useEmail, setUseEmail ] = useState< string | any >();
@@ -17,6 +18,11 @@ const Reset = () => {
 
     return ( 
         <section className="container-reset">    
+
+            <ModalPage>
+                <h2>Email enviado com sucesso</h2>
+            </ModalPage>
+
 
             <h1 className="logoType">E-commerce</h1>
 

@@ -5,6 +5,8 @@ import { User } from "../types/type";
 export type UserContextType ={
     user: User | null ;
 
+    open: boolean;
+    setOpen: (value: boolean) => void;
     resetUser: (email: string) => void;
     logoutUser: () => void;
     newUser: (name: string, secodName: string, email: string, password: string) => Promise<void>;

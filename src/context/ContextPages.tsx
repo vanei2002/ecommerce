@@ -4,58 +4,75 @@ import { ContextPags } from "./CreateContext";
 import {useState , useEffect} from "react"
 import { User } from "../types/type";
 import {AuthUser}  from "../hook/AuthUser";
+import React from "react";
 
 
 export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
 
+    const [user , setUser] = useState<User | null>(null);
+    const userApi = AuthUser();
+    const [open, setOpen] = React.useState(false);
+
+    
+    const setLocalStronge = (token: string) => localStorage.setItem('user_token', token);
+
+    const removeLocalStronge = () => localStorage.removeItem('user_token');
+    
+    const creteToken = () => {
+        const token = Math.random().toString(36).substr(2);
+        return token;
+    }
+
+    const singinEmail = async (result: any ) => {
+
+        const data = await userApi.singinEmail(result);
+
+        if(data) {setInterval( () => { 
+            setUser(data)
+            setLocalStronge(data.token)
+            window.location.href='/'
+        },1000)}else{
+            return alert('Usuario não cadastrado');
+        }
+
+        
+    }
+
     const singInFacebook = () =>{
         const provider = new FacebookAuthProvider
-        signInWithPopup(auth, provider)
-        .then(e => {if(e.user.emailVerified == false)console.log("problema de autenticação")})
-        .catch(e => console.log(e))
+        signInWithPopup(auth, provider).then(result =>{
+            singinEmail(result.user.email); 
+        })
+        .catch(err => console.log(err))
     };
     
     const singInGoogle = () =>{
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider).then(result => { 
-            singinEmail(result);
-        }).catch(e => console.log(e));
+            singinEmail(result.user.email);
+        }).catch(err => console.log(err));
     };
 
-    const singinEmail = async (result: any) => {
-        
-        const data = await userApi.singinEmail(result.user.email);
-        console.log(data)
-        console.log(result.user)
-
-        if(!data) setTimeout(() => { 
-            window.location.href='/'
-        },2000)
-    }
-
     useEffect(() =>{
+
         const validadeToken = async () =>{
-            const storage = localStorage.getItem('user_token');
-
-            if(storage){     
-                const data =  await userApi.validateToken(storage);
-
-                if(data){
-                    setUser(data);
+            const token = localStorage.getItem('user_token');
+            if(token){      
+                const data = await userApi.validateToken(token);
+                
+                if(data){setUser(data)}
+                else if(user == null || user == undefined){
+                    localStorage.removeItem('user_token');              
                 }
             }
         }
         validadeToken();
     },[]);
 
-    const [user , setUser] = useState<User | null>(null);
-    const userApi = AuthUser();
-
+    
     async function signin(email: string , password: string){
         
         const data = await userApi.signin(email, password);
-
-        console.log(data)
 
         if(data.email == email && data.password == password){
             setUser(data);
@@ -63,49 +80,47 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
             return true;
 
         }else{
-           alert('Email ou senha incorretos');
+           setOpen(true);
            return false
         }
     }
 
-    const setLocalStronge = (token: string) => {
-        localStorage.setItem('user_token', token);
-    }
 
     async function logoutUser(){
-
         // await userApi.logoutUser()
-
         setUser(null);
-        setLocalStronge('');
+        removeLocalStronge();
         return true
     };
 
+
     async function newUser (name: string, secodName: string, email: string, password: string){
-
-        const creteToken = () => {
-            const token = Math.random().toString(36).substr(2);
-            return token;
-        }
-
         const token = creteToken();
         const create = await userApi.newUser(name, secodName, email, password , token);
         
-        console.log(create);
-
-        if(typeof create == 'string') alert(create);
-        
+        if(typeof create == 'string') alert(create); 
     };
+
 
     async function  resetUser (email: string){
        const reset =  await userApi.resetUser(email);
-
-       alert(reset)
-    };
+       setOpen(reset);
+   };
 
     return (
 
-        <ContextPags.Provider value={{ singInFacebook, singInGoogle, signin, newUser, resetUser, logoutUser, user}}>
+        <ContextPags.Provider value={{ 
+            singInFacebook, 
+            singInGoogle, 
+            signin, 
+            newUser, 
+            resetUser, 
+            logoutUser, 
+            user,
+            setOpen,
+            open
+
+            }}>
             {children}
         </ContextPags.Provider>
     );
