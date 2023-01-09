@@ -8,6 +8,7 @@ export const AuthUser = () => ({
     signin: async (email: string , password: string) =>{
         try{
             const response = await api.post('/users/singin', {email , password});
+            console.log(response.data)
             return response.data;
         }
         catch(err){
