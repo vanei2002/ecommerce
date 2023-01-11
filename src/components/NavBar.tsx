@@ -10,7 +10,7 @@ const Navbar = () =>{
     const navegation = useNavigate();
 
     const userOff = async () => {
-        await logoutUser();
+        logoutUser();
         navegation('/')
     }
 
@@ -28,7 +28,7 @@ const Navbar = () =>{
                 </ul>
                         
                 {user ? 
-                    <button className="button-navbar" onClick={userOff}>{`${user.name}`}</button> 
+                    <button className="button-navbar" onClick={userOff}>{`${user.name} ${user.surname}`}</button> 
                         : 
                     <Link to='/login'>Login</Link>
                 }

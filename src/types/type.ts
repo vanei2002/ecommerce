@@ -1,7 +1,7 @@
 export type User ={
-    id: number,
-    name: string;
-    letsName: string;
     email: string;
+    name: string;
+    surname: string;
     password: string;
+    token: string;
 }

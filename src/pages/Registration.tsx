@@ -15,13 +15,13 @@ const Registration = () => {
     const [ useEmail, setUseEmail ] = useState();
     const [ usePassword, setUsePassword ] = useState();
     const [nameRegis, setNameRegis] = useState();
-    const [secondName, setSecondName] = useState();
+    const [surName, setSurName] = useState();
 
     const { newUser, textModal , modalFunction } = useContext(ContextPags);
 
     async function createUser () {
-        if(useEmail && usePassword && nameRegis && secondName){
-            await newUser(useEmail , usePassword, nameRegis, secondName);;
+        if(useEmail && usePassword && nameRegis && surName){
+            await newUser(nameRegis ,surName, useEmail , usePassword, );
             
         }else{
             modalFunction('Campos não preenchidos', true)
@@ -50,7 +50,7 @@ const Registration = () => {
 
                 <div className="input-name">
                     <InputText children="Nome" type="text" val="" id="name" onChange={setNameRegis}/>
-                    <InputText children="Sobrenome" type="latsname" val="" id="latsname" onChange={setSecondName}/>
+                    <InputText children="Sobrenome" type="latsname" val="" id="latsname" onChange={setSurName}/>
                 </div>
             
                 <InputText children="E-mail / Usuario" type="email" val="exemplo@gmail.com" id="email" onChange={setUseEmail}/>

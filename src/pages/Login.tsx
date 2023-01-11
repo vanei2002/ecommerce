@@ -12,6 +12,7 @@ import "../styles/pages/login.sass"
 import ModalPage from "../components/Modal";
 
 import cars from "../../public/imgs/cars2.png"
+import ImgCars from "../components/imgcars";
 
 const Login= () => {
     const navegation = useNavigate();
@@ -33,6 +34,7 @@ const Login= () => {
    
     return ( 
         <section className="container-login">    
+            <section>
             <ModalPage>
                 <h2>{textModal}</h2>
             </ModalPage>    
@@ -62,6 +64,9 @@ const Login= () => {
             <hr />
             <Link to={`/registration`} className="registration">Não tem uma conta?</Link>
 
+            </section>
+
+            <ImgCars/>
         </section>
      );
 }

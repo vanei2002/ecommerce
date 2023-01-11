@@ -3,7 +3,26 @@
 @mixin spacing 
     color: variables.$color-title
     background: variables.$background-conatiner
- 
+
+@mixin imglogo
+    width: 5rem
+    height: 5rem
+    margin-right: .7rem
+
+@mixin animationCars
+    animation: spin 3s linear infinite
+    position: absolute
+
+    @keyframes spin
+        0%
+            transform: rotate(30deg)
+            left: -100%
+
+        100%
+            left: 80%
+            
+            
+
 @mixin icons
     background: #fafafa
     color: #7f7f7f

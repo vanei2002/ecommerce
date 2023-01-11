@@ -92,10 +92,10 @@ export const ContextPagsProvider = ({children}: {children: JSX.Element})=> {
         }
     }
 
-    async function newUser (name: string, secodName: string, email: string, password: string){
+    async function newUser (name: string, surname: string, email: string, password: string){
 
         const token = creteToken();
-        const create = await userApi.newUser(name, secodName, email, password , token);
+        const create = await userApi.newUser(name, surname, email, password , token);
 
         if(create == true){
             modalFunction('Usuario cadastrado com sucesso', true);

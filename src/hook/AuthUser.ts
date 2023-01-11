@@ -26,13 +26,13 @@ export const AuthUser = () => ({
         }
     },
 
-    newUser: async (name: string, secodName: string, email: string, password: string, token: string) =>{    
+    newUser: async (name: string, surname: string, email: string, password: string, token: string) =>{    
         try{
             const reponse = await api.post('/users/create', 
-            {
-                email, 
+            {   
                 name, 
-                secodName,
+                surname,
+                email,
                 password,
                 token 
             })
