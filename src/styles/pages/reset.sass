@@ -1,0 +1,78 @@
+@use "../variables"
+@use "../mixins"
+
+.container-reset
+    width: 23%
+    min-width: 25rem
+    margin: 8% auto
+    padding: 1.2rem
+    border-radius: variables.$border-radius-conntainer 
+    @include mixins.spacing 
+    @include mixins.animation
+       
+    .logoType 
+        text-align: center
+        padding: 0.6rem 0 .8rem 0
+        background: variables.$gradienttwo
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        font-size: 2.5rem
+        display: flex
+        justify-content: center
+        align-items: center
+
+        img
+         @include mixins.imglogo
+
+    .welcome
+        padding: 10px
+
+        h1
+            text-align: center
+            align-items: center
+            color: rgb(103, 58, 183)
+            font-size: 1.25rem
+            font-weight: 600
+            margin-bottom: 1rem 
+
+        span
+            text-align: center
+            display: block
+            font-size: .9rem 
+            color: #a4a4a4 
+            margin-bottom: .5rem   
+
+    .input-container
+        display: flex
+        flex-direction: column
+        margin-top: 1rem 
+
+        span
+            color: #a4a4a4 
+            font-size: .9rem
+            text-align: center
+            margin: 1.5rem 0 2rem 0
+
+    .checkInput
+        margin: .3rem 0 1rem 0
+        display: flex
+        justify-content: space-between
+
+    .login
+        font-weight: bold
+        padding: 1.5rem 0 1rem 0
+        display: flex
+        justify-content: center
+        @include mixins.links
+
+    .button-reset
+        @include mixins.button
+        
+    .reset
+        @include mixins.links
+        padding: .5rem
+
+
+        
+     
+     

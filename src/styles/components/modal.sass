@@ -1,0 +1,61 @@
+@use '../variables'
+@use '../mixins'
+
+
+.modal
+    position: absolute
+    top: 7%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 20.5rem
+    height: 6rem
+    background: variables.$gradienttwo
+    border-radius: 0.5rem
+    box-shadow: 0 0.5rem 1rem rgba(49, 70, 138, 0.15)
+    animation: modal 3s infinite  
+    
+    animation: name duration timing-function delay iteration-count direction fill-mode
+
+    @keyframes modal
+
+        25%
+            opacity: 0.5
+            transform: translate(-50%, -50%) scale(0.65)
+
+        50% 
+            opacity: 1
+            transform: translate(-50%, -50%) scale(0.85)
+
+        100%
+            opacity: 1
+            transform: translate(-50%, -50%) scale(1)
+
+    .modal-text
+        display: flex
+        color: #fff
+        padding: .5rem
+        text-align: center
+        align-items: center
+        justify-content: center
+        width: 85%
+        height: 100%
+        margin: 0 auto
+        font-size: .8rem 
+
+    button
+        position: absolute
+        top: 3px
+        right: 3px
+        width: 1.5rem
+        cursor: pointer
+        background: transparent
+        border: none
+
+        img 
+            position: relative
+            width: 100%
+            // cursor: url(../../public/svg/Hand2.svg) , auto
+
+
+
+
